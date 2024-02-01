@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "DxFx"
+description = "DxFx - DJI Pilot bytecode fixer"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Topic :: System",
+    "Topic :: Utilities",
+]
+dynamic = ["version", "dependencies"]
+
+[project.scripts]
+dxfx = "dxfx.cli:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "dxfx.__version__" }
+dependencies = { file = "requirements.txt" }
+
+[tool.setuptools.packages.find]
+exclude = ["*.tests", "*.tests.*", "test*", "tests"]
